@@ -80,6 +80,7 @@ def get_docking_score(protien_mol, ligand_mol):
             generate_scores=True,
             exhaustiveness=4,
             verbosity=0,
+            seed=42
         )
 
         base_dir.cleanup()
