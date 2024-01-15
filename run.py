@@ -13,11 +13,11 @@ from rdkit.rdBase import BlockLogs
 def dock_ligands(ligand_chunk, protien_pdb_path):
     with BlockLogs():
         protien_mol = prepare_protien(protien_pdb_path)
-        ligand_mols = [prepare_ligand(ligand_smiles) for ligand_smiles in ligand_chunk]
 
         scores = []
-        for ligand_mol in ligand_mols:
+        for ligand_smiles in ligand_chunk:
             try:
+                ligand_mol = prepare_ligand(ligand_smiles)
                 scores.append(get_docking_score(protien_mol, ligand_mol))
             except Exception as e:
                 scores.append(None)
